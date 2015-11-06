@@ -5,3 +5,7 @@
 
 	</div>
 <% end %>
+<% if @posts.count == 0 %>
+	<h2>No Posts to be Displayed</h2>
+<% end %>
+<%= link_to "New Post", new_post_path %>
