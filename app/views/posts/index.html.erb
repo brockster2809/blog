@@ -1,16 +1,16 @@
-<% @posts.each do |post| %>
-	<div class="post_wrapper">
-		<h2 class="title"><%= link_to post.title, post %></h2>
-		<p class="date">Created at <%= time_ago_in_words(post.created_at)%> ago</p>
+<ul class="nav nav-tabs" role="tablist">
+  <li class="active"><%= link_to 'All Posts', posts_path %></li>
+  <li><%= link_to 'New Post', new_post_path %></li>
+</ul>
 
-	</div>
+<% @posts.each do |post| %>
+		<h2 class="title"><%= link_to post.title, post %></h2>
+		<p class="date">Created at <%= post.created_at.strftime("%B %d, %Y") %></p>
 <% end %>
 <% if @posts.count == 0 %>
 	<h2>No Posts to be Displayed</h2>
 <% end %>
 
-<% if user_signed_in? %>
-<%= link_to "New Post", new_post_path %>
-<% else %>
-<%= link_to "Sign In", new_user_session_path %>
-<% end %>
+
+
+

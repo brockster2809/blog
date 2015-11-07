@@ -8,11 +8,29 @@
 </head>
 <body>
 
- <% flash.each do |name, msg| %>
-                        <%=  msg %>
-                <% end %>
+<%= render 'posts/navigation' %>
 
-<%= yield %>
+<div id="main_container" class="container">
+	
+
+	<div class="row">
+		<div id="sidebar" class="col-xs-1">
+		</div>
+		<div id="content" class="col-xs-11">
+      <div class="row">
+            <div class="col-xs-12">
+              <% flash.each do |name, msg| -%>
+                <%= content_tag :div, msg, class: "alert alert-#{name}" %>
+              <% end -%>
+            </div>
+      </div>
+      
+			<%= yield %>
+		</div>
+	</div>
+</div>
+
+
 
 </body>
 </html>

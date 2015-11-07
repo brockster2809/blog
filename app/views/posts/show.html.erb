@@ -3,11 +3,10 @@
 </h1>
 
 <p class="date">
-	Submitted <%= time_ago_in_words(@post.created_at) %> Ago 
+	Submitted on <%= @post.created_at.strftime("%B %d, %Y") %> 
 	<% if user_signed_in?  %>
 	| <%= link_to "Edit" , edit_post_path(@post) %> | <%= link_to 'Delete', post_path(@post), :method => :delete , data: {confirm: "Are you sure?"}%> 
 	<% end %>
-	| <%= link_to "Home" , root_path %>
 </p>
 
 <p class="body">
@@ -18,6 +17,13 @@
 <%= render @post.comments %>
 
 <% if user_signed_in? %>
-<h3>Add a Comment:</h3>
-<%= render "comments/form" %>
+	<h3>Add a Comment:</h3>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-6">
+				<%= render "comments/form" %>
+			</div>
+		</div>
+	</div>
+
 <% end  %>
