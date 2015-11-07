@@ -1,4 +1,8 @@
 <p><%= comment.body %><br>
-Created <%= time_ago_in_words(comment.created_at)%> ago by <strong><%= comment.name %></strong> | <%= link_to 'Delete', [comment.post, comment], 
+Created <%= time_ago_in_words(comment.created_at)%> ago by <strong><%= comment.name %></strong> 
+<% if user_signed_in? %>
+| <%= link_to 'Delete', [comment.post, comment], 
 :confirm => 'Are you sure?', 
-:method => :delete, data: {confirm: "Are you sure?"} %></p>
+:method => :delete, data: {confirm: "Are you sure?"} %>
+<% end %>
+</p>

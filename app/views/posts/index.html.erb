@@ -8,4 +8,9 @@
 <% if @posts.count == 0 %>
 	<h2>No Posts to be Displayed</h2>
 <% end %>
+
+<% if user_signed_in? %>
 <%= link_to "New Post", new_post_path %>
+<% else %>
+<%= link_to "Sign In", new_user_session_path %>
+<% end %>
